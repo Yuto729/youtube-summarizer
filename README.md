@@ -82,8 +82,10 @@ DIFY_API_KEY=取得したAPIキー
 npx wrangler d1 create youtube-summarizer
 ```
 作成後、以下のような出力が表示される：
+```bash
 ✅ Successfully created DB 'youtube-summarizer'
 Created D1 database 'youtube-summarizer' (ID: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)
+```
 
 表示されたデータベースIDを wrangler.toml の database_id に設定する：
 ```bash
