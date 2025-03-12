@@ -1,15 +1,15 @@
 {
-  "name": "youtube-summary-bot",
+  "name": "youtube-summarizer",
   "version": "1.0.0",
-  "description": "YouTube video summarizer with AI that posts to Slack",
-  "main": "src/index.js",
+  "description": "YouTube video summarizer that posts to Slack",
+  "type": "module",
   "scripts": {
-    "start": "node src/index.js",
-    "deploy": "gcloud functions deploy youtubeSummaryBot --runtime nodejs18 --trigger-http"
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "start": "wrangler dev"
   },
-  "dependencies": {
-    "dotenv": "^16.4.7",
-    "googleapis": "^129.0.0"
-  },
-  "type": "module"
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250311.0",
+    "wrangler": "^3.114.1"
+  }
 }

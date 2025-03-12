@@ -1,0 +1,5 @@
+YOUTUBE_API_KEY=取得したAPIキー
+YOUTUBE_CHANNEL_ID=UCpsDJin8MZKIaIxtKlcK25g
+DIFY_API_KEY=取得したAPIキー
+DIFY_API_ENDPOINT=https://api.dify.ai/v1
+NODE_ENV=development
