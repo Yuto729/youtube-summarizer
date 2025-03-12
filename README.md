@@ -96,6 +96,7 @@ database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
 # スキーマの適用（ローカル環境用）
+```bash
 npx wrangler d1 execute DB --local --file=./schema.sql
 ```
 
@@ -152,6 +153,7 @@ database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
 # スキーマの適用（本番環境用）
+```bash
 npx wrangler d1 execute DB --remote --file=./schema.sql
 ```
 
