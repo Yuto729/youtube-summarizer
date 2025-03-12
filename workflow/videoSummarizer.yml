@@ -1,0 +1,45 @@
+name: YouTube Video Summarizer
+description: Summarize YouTube videos and post to Slack
+
+triggers:
+  - type: api
+    name: summarize_video
+
+steps:
+  - name: generate_summary
+    type: llm
+    model: gpt-4
+    prompt: |
+      以下のYouTube動画の内容を要約してください：
+      タイトル: {{video_title}}
+      説明: {{video_description}}
+      
+      要約は以下の点を含めてください：
+      - 動画の主なトピック
+      - キーポイント（3-5点）
+      - 結論や重要なメッセージ
+
+  - name: post_to_slack
+    type: action
+    action: slack
+    inputs:
+      channel: "{{env.SLACK_CHANNEL_ID}}"
+      blocks:
+        - type: "header"
+          text:
+            type: "plain_text"
+            text: "🎥 新しい動画が投稿されました！"
+        - type: "section"
+          text:
+            type: "mrkdwn"
+            text: "*{{video_title}}*\nhttps://www.youtube.com/watch?v={{video_id}}"
+        - type: "divider"
+        - type: "section"
+          text:
+            type: "mrkdwn"
+            text: "*AI要約:*\n{{steps.generate_summary.output}}"
+
+outputs:
+  - name: summary
+    description: 動画の要約
+    type: string 

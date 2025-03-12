@@ -1,0 +1,15 @@
+{
+  "name": "youtube-summary-bot",
+  "version": "1.0.0",
+  "description": "YouTube video summarizer with AI that posts to Slack",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "deploy": "gcloud functions deploy youtubeSummaryBot --runtime nodejs18 --trigger-http"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "googleapis": "^129.0.0"
+  },
+  "type": "module"
+}
