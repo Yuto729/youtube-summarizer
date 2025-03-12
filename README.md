@@ -50,9 +50,9 @@ YouTubeチャンネルの最新動画を自動で要約する.
         - このWebhook URLを`dify/youtube-summarizer.yml`の`@WRITE_HERE`部分に設定する
         
         注意: 
-        - このWebhook URLは秘密情報として扱い、GitHubなどに公開しないようにしてください。
-        - 一度作成したWebhook URLは後から確認することができません。安全な場所に保管してください。
-        - 誤ってURLを公開してしまった場合は、すぐに削除して新しいWebhookを作成してください。
+        - このWebhook URLは秘密情報として扱い、GitHubなどに公開しない。
+        - 一度作成したWebhook URLは後から確認することができない。安全な場所に保管する。
+        - 誤ってURLを公開してしまった場合は、すぐに削除して新しいWebhookを作成する。
         
    3. API Keyの取得
       - 右上のプロフィールメニューから"API Keys"を選択
@@ -80,16 +80,18 @@ DIFY_API_KEY=取得したAPIキー
 ```bash
 # データベースの作成
 npx wrangler d1 create youtube-summarizer
-
-作成後、以下のような出力が表示されます：
+```
+作成後、以下のような出力が表示される：
 ✅ Successfully created DB 'youtube-summarizer'
 Created D1 database 'youtube-summarizer' (ID: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)
 
-表示されたデータベースIDを wrangler.toml の database_id に設定します：
+表示されたデータベースIDを wrangler.toml の database_id に設定する：
+```bash
 [[d1_databases]]
 binding = "DB"
 database_name = "youtube-summarizer"
 database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+```
 
 # スキーマの適用（ローカル環境用）
 npx wrangler d1 execute DB --local --file=./schema.sql
@@ -132,16 +134,18 @@ npx wrangler login
 ```bash
 # 本番環境用データベースの作成
 npx wrangler d1 create youtube-summarizer
-
-作成後、以下のような出力が表示されます：
+```
+作成後、以下のような出力が表示される：
 ✅ Successfully created DB 'youtube-summarizer'
 Created D1 database 'youtube-summarizer' (ID: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)
 
-表示されたデータベースIDを wrangler.toml の本番環境用 database_id に設定します：
+表示されたデータベースIDを wrangler.toml の本番環境用 database_id に設定する：
+```bash
 [[d1_databases]]
 binding = "DB"
 database_name = "youtube-summarizer"
 database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+```
 
 # スキーマの適用（本番環境用）
 npx wrangler d1 execute DB --remote --file=./schema.sql
@@ -157,8 +161,10 @@ npx wrangler deploy
 ```
 5. 定期実行のスパンを長くする
 例として1日に1回実行する場合は、
+```bash
 [triggers]
 crons = ["0+0+*+*+*"]
+```
 と設定し、
 ```bash
 npx wrangler deploy
@@ -190,17 +196,17 @@ npx wrangler d1 execute youtube-summarizer --command "DELETE FROM processed_vide
 
 ## モニタリング
 
-- [Cloudflareダッシュボード](https://dash.cloudflare.com/)の"Workers & Pages"セクションで以下を確認できます：
+- [Cloudflareダッシュボード](https://dash.cloudflare.com/)の"Workers & Pages"セクションで以下を確認できる：
   - 実行ログ
   - エラー
   - パフォーマンスメトリクス
   - Cronジョブの実行状況
 
-## トラブルシューティング
+## トラブルシューティング   
 
 1. SSL/TLSエラーが発生する場合
-   - デプロイ直後は証明書の伝播に時間がかかることがあります
-   - 一時的な対応として`curl -k`オプションを使用できます
+   - デプロイ直後は証明書の伝播に時間がかかることがある
+   - 一時的な対応として`curl -k`オプションを使用できる
 
 2. データベースエラー
    - ローカル環境の場合は`--remote`フラグがないことを確認
