@@ -136,7 +136,7 @@ npx wrangler login
 npx wrangler d1 create youtube-summarizer
 ```
 作成後、以下のような出力が表示される：
-```
+```bash
 ✅ Successfully created DB 'youtube-summarizer'
 Created D1 database 'youtube-summarizer' (ID: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)
 ```
