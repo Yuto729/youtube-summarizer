@@ -11,6 +11,6 @@ database_name = "youtube-summarizer"
 database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
 [vars]
-YOUTUBE_CHANNEL_ID = ""
-YOUTUBE_API_KEY = ""
-DIFY_API_KEY = ""
+YOUTUBE_CHANNEL_ID = "" # @WRITE_HERE
+YOUTUBE_API_KEY = "" # @WRITE_HERE
+DIFY_API_KEY = "" # @WRITE_HERE
