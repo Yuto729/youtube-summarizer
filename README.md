@@ -37,6 +37,9 @@ YouTubeチャンネルの最新動画を自動で要約する.
 
    2. ワークフローの作成
       - DSLファイルをインポートから`dify/youtube-summarizer.yml`をインポート
+      - Youtube Transcript APIがインストールされていないとできないので、マーケットプレイスから「search API」をインストールする.
+        - 「承認するには」からAPIキーを取得し、入力する.
+        - gpt-4oのノードをクリックし、コンテキストにyoutube transcript APIの出力を入れる.
       - [Slack API](https://api.slack.com/apps)にアクセス
         - "Create New App"をクリック
         - "From scratch"を選択
@@ -169,7 +172,7 @@ npx wrangler deploy
 例として1日に1回実行する場合は、
 ```bash
 [triggers]
-crons = ["0+0+*+*+*"]
+crons = ["0 0 * * *"]
 ```
 と設定し、
 ```bash
